@@ -1,0 +1,39 @@
+name: 🧪 QA Automation - Integracion con Jira Xray
+
+on:
+  push:
+    branches: [ principal ]
+  pull_request:
+    branches: [ principal ]
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Clonar el repositorio
+      - name: 📥 Clonar repositorio
+        uses: actions/checkout@v4
+
+      # 2. Configurar Node.js
+      - name: ⚙️ Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      # 3. Instalar dependencias
+      - name: 📦 Instalar dependencias
+        run: npm install
+
+      # 4. Ejecutar pruebas automatizadas (genera results.xml)
+      - name: 🚀 Ejecutar pruebas
+        run: npm run test:ci
+
+      # 5. Subir resultados a Jira Xray de forma automatica
+      - name: 📤 Importar resultados a Jira Xray
+        uses: xray/import-assets-action@v2.0.0
+        with:
+          xray-client-id: ${{ secrets.XRAY_CLIENT_ID }}
+          xray-client-secret: ${{ secrets.XRAY_CLIENT_SECRET }}
+          test-results-file: 'results.xml'
+          test-results-format: 'junit'
