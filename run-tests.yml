@@ -2,9 +2,9 @@ name: 🧪 QA Automation - Integracion con Jira Xray
 
 on:
   push:
-    branches: [ principal ]
+    branches: [ main ]
   pull_request:
-    branches: [ principal ]
+    branches: [ main ]
 
 jobs:
   run-tests:
