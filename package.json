@@ -1,0 +1,27 @@
+{
+  "name": "qa-lab-kaly86",
+  "version": "1.0.0",
+  "description": "Laboratorio de QA Automation con integración a Jira Xray",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:ci": "jest --reporters=default --reporters=jest-junit"
+  },
+  "keywords": [
+    "qa",
+    "testing",
+    "xray",
+    "jira",
+    "jest"
+  ],
+  "author": "Kaly El Dandy",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-junit": "^16.0.0"
+  },
+  "jest-junit": {
+    "outputDirectory": ".",
+    "outputName": "results.xml"
+  }
+}
