@@ -31,3 +31,11 @@ class TestMatematicasPythonV2(unittest.TestCase):
 
     def test_SCRUM_10_deberia_multiplicar_correctamente(self):
         self.assertEqual(multiplicar(10, 5), 50)
+
+    # ⚠️ TEST QUE FALLA A PROPÓSITO EN PYTHON:
+    # Este test está diseñado para fallar y así poder comprobar el detalle del error en Jira y en tu reporte HTML de Python.
+    def test_QA_8_deberia_fallar_a_proposito_para_verificar_reporte(self):
+        valor_esperado = 100
+        valor_obtenido = 50 + 40 # Esto dará 90
+        self.assertEqual(valor_obtenido, valor_esperado) # Fallará porque 90 != 100
+
