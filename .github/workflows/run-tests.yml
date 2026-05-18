@@ -1,4 +1,4 @@
-name: 🧪 QA Automation - Integracion con Jira Xray
+name: 🐍 QA Automation - Python a Jira Xray
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  run-tests:
+  run-tests-python:
     runs-on: ubuntu-latest
 
     steps:
@@ -15,19 +15,19 @@ jobs:
       - name: 📥 Clonar repositorio
         uses: actions/checkout@v4
 
-      # 2. Configurar Node.js
-      - name: ⚙️ Configurar Node.js
-        uses: actions/setup-node@v4
+      # 2. Configurar Python
+      - name: ⚙️ Configurar Python
+        uses: actions/setup-python@v5
         with:
-          node-version: 18
+          python-version: '3.10'
 
-      # 3. Instalar dependencias
-      - name: 📦 Instalar dependencias
-        run: npm install
+      # 3. Instalar dependencias Python
+      - name: 📦 Instalar dependencias Python
+        run: pip install pytest
 
-      # 4. Ejecutar pruebas automatizadas (genera results.xml)
-      - name: 🚀 Ejecutar pruebas
-        run: npm run test:ci
+      # 4. Ejecutar pruebas Python (genera results_python.xml)
+      - name: 🚀 Ejecutar pruebas Python
+        run: pytest tests/test_matematicas.py --junitxml=results_python.xml
 
       # 5. Subir resultados a Jira Xray de forma automatica
       - name: 📤 Importar resultados a Jira Xray
@@ -36,6 +36,6 @@ jobs:
           username: ${{ secrets.XRAY_CLIENT_ID }}
           password: ${{ secrets.XRAY_CLIENT_SECRET }}
           testFormat: "junit"
-          testPaths: "results.xml"
+          testPaths: "results_python.xml"
           xrayCloud: "true"
           projectKey: "SCRUM"
