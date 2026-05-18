@@ -39,6 +39,7 @@ jobs:
 
       # 5. Subir resultados a Jira Xray de forma automatica
       - name: 📤 Importar resultados a Jira Xray
+        if: always()
         uses: mikepenz/xray-action@v3.0.5
         with:
           username: ${{ secrets.XRAY_CLIENT_ID }}
