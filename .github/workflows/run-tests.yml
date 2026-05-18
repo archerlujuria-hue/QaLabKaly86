@@ -25,9 +25,9 @@ jobs:
       - name: 📦 Instalar dependencias Python
         run: pip install pytest
 
-      # 4. Ejecutar pruebas Python (genera results_python.xml)
+      # 4. Ejecutar pruebas Python (genera results_python.xml de todos los archivos test_*.py)
       - name: 🚀 Ejecutar pruebas Python
-        run: pytest tests/test_matematicas.py --junitxml=results_python.xml
+        run: pytest tests/test_*.py --junitxml=results_python.xml
 
       # 5. Subir resultados a Jira Xray de forma automatica
       - name: 📤 Importar resultados a Jira Xray
