@@ -23,7 +23,7 @@ jobs:
 
       # 3. Instalar dependencias Python
       - name: 📦 Instalar dependencias Python
-        run: pip install pytest pytest-html
+        run: pip install -r requirements.txt
 
       # 4. Ejecutar pruebas Python (genera results_python.xml y reporte_python.html)
       - name: 🚀 Ejecutar pruebas Python
