@@ -25,12 +25,13 @@ graph TD
 
 ## 📁 Archivos del Proyecto
 
-El repositorio está estructurado únicamente con los siguientes archivos esenciales de Python:
+El repositorio está estructurado con los siguientes archivos en la raíz y subcarpetas:
 
 | Ruta del Archivo | Propósito | Estado |
 | :--- | :--- | :--- |
 | **`tests/test_matematicas_v2.py`** | Suite de pruebas unitarias matemáticas vinculada a Jira Xray usando códigos de Jira (ej: `SCRUM_8`). | Activo |
 | **`.github/workflows/run-tests-python.yml`** | Configuración activa del pipeline en la nube de GitHub para ejecutar las pruebas Python. | Activo |
+| **`requirements.txt`** | Archivo estándar de Python que centraliza todas las dependencias requeridas (ej: pytest, pytest-html). | Activo |
 
 ---
 
@@ -53,9 +54,9 @@ El repositorio está estructurado únicamente con los siguientes archivos esenci
 
 Para correr las pruebas localmente en tu máquina y generar los reportes de diagnóstico, ejecutá:
 
-1. **Instalar dependencias de pruebas:**
+1. **Instalar dependencias desde el archivo de requerimientos:**
    ```bash
-   pip install pytest pytest-html
+   pip install -r requirements.txt
    ```
 
 2. **Ejecutar la suite de pruebas:**
@@ -76,6 +77,7 @@ Para subir tus pruebas actualizadas de Python y disparar el pipeline automático
 # 1. Agregar los archivos del proyecto
 git add tests/test_matematicas_v2.py
 git add .github/workflows/run-tests-python.yml
+git add requirements.txt
 git add Jira_Git/README_python.md
 
 # 2. Confirmar los cambios
