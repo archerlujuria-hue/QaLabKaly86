@@ -23,11 +23,19 @@ jobs:
 
       # 3. Instalar dependencias Python
       - name: 📦 Instalar dependencias Python
-        run: pip install pytest
+        run: pip install pytest pytest-html
 
-      # 4. Ejecutar pruebas Python (genera results_python.xml de todos los archivos test_*.py)
+      # 4. Ejecutar pruebas Python (genera results_python.xml y reporte_python.html)
       - name: 🚀 Ejecutar pruebas Python
-        run: pytest tests/test_*.py --junitxml=results_python.xml
+        run: pytest tests/test_*.py --junitxml=results_python.xml --html=reporte_python.html --self-contained-html
+
+      # 4.5 Subir reporte HTML de pruebas Python (incluso si fallan)
+      - name: 📤 Subir Reporte HTML de Pruebas Python
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reporte-pruebas-python
+          path: reporte_python.html
 
       # 5. Subir resultados a Jira Xray de forma automatica
       - name: 📤 Importar resultados a Jira Xray
