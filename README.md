@@ -10,15 +10,15 @@ El siguiente diagrama ilustra cómo funciona la integración continua del proyec
 
 ```mermaid
 graph TD
-    A[Código en Python push] -->|Dispara| B[GitHub Actions Runner]
-    B -->|1. Setup| C[Configurar Python 3.10]
-    C -->|2. Install| D[Instalar Pytest & Pytest-HTML]
-    D -->|3. Run| E[Ejecutar pytest tests/test_matematicas_v2.py]
-    E -->|Genera| F[results_python.xml (JUnit XML)]
-    E -->|Genera| G[reporte_python.html (Web Report)]
-    G -->|4. Guardar| H[Upload Artifact: reporte-pruebas-python]
-    F -->|5. Sincronizar| I[API Xray Cloud]
-    I -->|6. Jira Backlog| J[Tests actualizados en Jira]
+    A["Código en Python push"] -->|Dispara| B["GitHub Actions Runner"]
+    B -->|1. Setup| C["Configurar Python 3.10"]
+    C -->|2. Install| D["Instalar Pytest & Pytest-HTML"]
+    D -->|3. Run| E["Ejecutar pytest tests/test_matematicas_v2.py"]
+    E -->|Genera| F["results_python.xml (JUnit XML)"]
+    E -->|Genera| G["reporte_python.html (Web Report)"]
+    G -->|4. Guardar| H["Upload Artifact: reporte-pruebas-python"]
+    F -->|5. Sincronizar| I["API Xray Cloud"]
+    I -->|6. Jira Backlog| J["Tests actualizados en Jira"]
 ```
 
 ---
