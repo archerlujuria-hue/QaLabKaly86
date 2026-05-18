@@ -31,9 +31,11 @@ jobs:
 
       # 5. Subir resultados a Jira Xray de forma automatica
       - name: 📤 Importar resultados a Jira Xray
-        uses: xray/import-assets-action@v2.0.0
+        uses: mikepenz/xray-action@v3.0.5
         with:
-          xray-client-id: ${{ secrets.XRAY_CLIENT_ID }}
-          xray-client-secret: ${{ secrets.XRAY_CLIENT_SECRET }}
-          test-results-file: 'results.xml'
-          test-results-format: 'junit'
+          username: ${{ secrets.XRAY_CLIENT_ID }}
+          password: ${{ secrets.XRAY_CLIENT_SECRET }}
+          testFormat: "junit"
+          testPaths: "results.xml"
+          xrayCloud: "true"
+          projectKey: "SCRUM"
